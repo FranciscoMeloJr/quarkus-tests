@@ -21,7 +21,7 @@ public class HelloResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response get(@QueryParam("name") @DefaultValue("World") String name) {
         if (message.isPresent()) {
-            return Response.ok().entity(new Hello(String.format(message.get(), name))).build();
+            return Response.ok().entity(message.get()).build();
         }
 
         return Response.status(500).entity("Secret not present").build();
